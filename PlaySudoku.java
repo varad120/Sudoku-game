@@ -10,18 +10,29 @@ public class PlaySudoku {
     final int MAX_VALUE = 9;
 
 	void printBoard(int[][] board) {
-		    for (int row = 0; row < 9; row++) {
-		    	if (row % 3 == 0 && row != 0) {
-    		        System.out.println("-------------------");
-    		      }
-            for (int column = 0; column < 9; column++) {
-            	if (column % 3 == 0 && column != 0) {
-    		        System.out.print("|");
-    		      }
-                System.out.print(board[row][column] + " ");
-            }
-            System.out.println();
-        }
+		System.out.println("     123   456   789");
+		System.out.println("----------------------");
+		for(int i = 0; i<9; i++)
+		{
+			
+			System.out.print(i+1+ " ");
+			for(int j = 0; j<9; j++)
+			{
+				if(j==0 || j==3 || j==6 ) {
+					System.out.print(" | ");
+				}
+				System.out.print(board[i][j]);
+				if(j==8)
+				{
+					System.out.print(" | ");
+				}
+			}
+			if(i==2 || i==5 || i==8)
+			{
+				System.out.print("\n----------------------");
+			}
+			System.out.println();
+		}
     }
 
     public boolean solve(int[][] board) {
@@ -34,12 +45,12 @@ public class PlaySudoku {
                 int usrrowValue = scanner.nextInt();
                 System.out.println("\nNow type in the col value...");
                 int usrcolValue = scanner.nextInt();
-                if (board[usrrowValue][usrcolValue] == NO_VALUE) {
+                if (board[usrrowValue-1][usrcolValue-1] == NO_VALUE) {
                 	
                 	System.out.println("\nNow type in the value...");
                 	int mainvalue = scanner.nextInt();
                 	if (mainvalue <= 9 && mainvalue >= 1) {
-                		board[usrrowValue][usrcolValue] = mainvalue;
+                		board[usrrowValue-1][usrcolValue-1] = mainvalue;
                 		printBoard(board);
                 	}
                 	else {
@@ -53,8 +64,8 @@ public class PlaySudoku {
             }
             else if (menuvalue == 2) {
             	System.out.println(2);
-            	Sudokuclass solveforme = new Sudokuclass();
-            	solveforme.solver(board);
+//            	Sudokuclass solveforme = new Sudokuclass();
+//            	solveforme.solver(board);
             	
             }
             else {
