@@ -1,4 +1,3 @@
-
 public class print {
 			
  print() {
@@ -8,7 +7,6 @@ public class print {
 		int [][]arr=new int[rows][colms];
 		for(int i = 0; i<rows; i++)
 		{
-			
 			System.out.print(i+1+ " ");
 			for(int j = 0; j<colms; j++)
 			{

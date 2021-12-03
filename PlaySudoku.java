@@ -71,8 +71,7 @@ public class PlaySudoku {
             else {
             	System.out.println("Please enter a correct option");
             }
+            scanner.close();
            		}
     	}
-    
-    
 }
