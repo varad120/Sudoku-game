@@ -45,12 +45,12 @@ public class PlaySudoku {
                 int usrrowValue = scanner.nextInt();
                 System.out.println("\nNow type in the col value...");
                 int usrcolValue = scanner.nextInt();
-                if (board[usrrowValue-1][usrcolValue-1] == NO_VALUE) {
+                if (board[(usrrowValue-1)][(usrcolValue-1)] == NO_VALUE) {
                 	
                 	System.out.println("\nNow type in the value...");
                 	int mainvalue = scanner.nextInt();
                 	if (mainvalue <= 9 && mainvalue >= 1) {
-                		board[usrrowValue-1][usrcolValue-1] = mainvalue;
+                		board[(usrrowValue-1)][(usrcolValue-1)] = mainvalue;
                 		printBoard(board);
                 	}
                 	else {
@@ -64,14 +64,13 @@ public class PlaySudoku {
             }
             else if (menuvalue == 2) {
             	System.out.println(2);
-//            	Sudokuclass solveforme = new Sudokuclass();
-//            	solveforme.solver(board);
+            	Sudokuclass solveforme = new Sudokuclass();
+            	solveforme.solver(board);
             	
             }
             else {
             	System.out.println("Please enter a correct option");
             }
-            scanner.close();
            		}
     	}
 }
