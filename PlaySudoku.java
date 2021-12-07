@@ -1,13 +1,9 @@
 import java.util.Scanner;
 
 public class PlaySudoku {
-	final int BOARD_SIZE = 9;
-    final int SUBSECTION_SIZE = 3;
-    final int BOARD_START_INDEX = 0;
 
     final int NO_VALUE = 0;
-    final int MIN_VALUE = 1;
-    final int MAX_VALUE = 9;
+
 
 	void printBoard(int[][] board) {
 		System.out.println("     123   456   789");
@@ -35,11 +31,13 @@ public class PlaySudoku {
 		}
     }
 
-    public boolean solve(int[][] board) {
-        while(true) {
-        	Scanner scanner = new Scanner(System.in);
+    public void solve(int[][] board) {
+    	Sudokuboard s2= new Sudokuboard();
+    	int menuvalue;
+    	Scanner scanner = new Scanner(System.in);
+        do{
             System.out.println("\n1. enter location for row and column...\n2. I give up solve for me\n3. Exit game...");
-            int menuvalue = scanner.nextInt();
+            menuvalue = scanner.nextInt();
             if(menuvalue == 1) {
             	System.out.println("\nNow type in the row value...");
                 int usrrowValue = scanner.nextInt();
@@ -64,13 +62,16 @@ public class PlaySudoku {
             }
             else if (menuvalue == 2) {
             	System.out.println(2);
+            	
             	Sudokuclass solveforme = new Sudokuclass();
-            	solveforme.solver(board);
+            	solveforme.solver(s2.board);
             	
             }
-            else {
+            else if(menuvalue<1|| menuvalue>3){
             	System.out.println("Please enter a correct option");
             }
-           		}
-    	}
+        }while(menuvalue!=3);
+        
+        scanner.close();
+    }
 }

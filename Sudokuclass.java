@@ -2,16 +2,16 @@ import java.util.stream.IntStream;
 
 public class Sudokuclass {
 	
-	boolean solver(final int[][] board) {
+	boolean solver(final int[][] myInt) {
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
-                if (board[row][column] == 0) {
+                if (myInt[row][column] == 0) {
                     for (int k = 1; k <= 9; k++) {
-                        board[row][column] = k;
-                        if (isValid(board, row, column) && solver(board)) {
-                        	printBoard(board);
+                    	myInt[row][column] = k;
+                        if (isValid(myInt, row, column) && solver(myInt)) {
+                        	printBoard(myInt);
                         }
-                        board[row][column] = 0;
+                        myInt[row][column] = 0;
                     }
                     return false;
                 }
@@ -20,7 +20,7 @@ public class Sudokuclass {
         return true;
     }
 	
-	void printBoard(int[][] board) {
+	void printBoard(int[][] myInt) {
 		System.out.println("     123   456   789");
 		System.out.println("----------------------");
 		for(int i = 0; i<9; i++)
@@ -32,7 +32,7 @@ public class Sudokuclass {
 				if(j==0 || j==3 || j==6 ) {
 					System.out.print(" | ");
 				}
-				System.out.print(board[i][j]);
+				System.out.print(myInt[i][j]);
 				if(j==8)
 				{
 					System.out.print(" | ");
@@ -46,13 +46,13 @@ public class Sudokuclass {
 		}
     }
 	
-	private boolean isValid(int[][] board, int row, int column) {
-        return rowCheck(board, row) &&
-          columnCheck(board, column) &&
-          subsectionConstraint(board, row, column);
+	private boolean isValid(int[][] myInt, int row, int column) {
+        return rowCheck(myInt, row) &&
+          columnCheck(myInt, column) &&
+          subsectionConstraint(myInt, row, column);
     }
 
-	private boolean subsectionConstraint(int[][] board, int row, int column) {
+	private boolean subsectionConstraint(int[][] myInt, int row, int column) {
         boolean[] constraint = new boolean[9];
         int subsectionRowStart = (row / 3) * 3;
         int subsectionRowEnd = subsectionRowStart + 3;
@@ -62,28 +62,28 @@ public class Sudokuclass {
 
         for (int r = subsectionRowStart; r < subsectionRowEnd; r++) {
             for (int c = subsectionColumnStart; c < subsectionColumnEnd; c++) {
-                if (!boxCheck(board, r, constraint, c)) return false;
+                if (!boxCheck(myInt, r, constraint, c)) return false;
             }
         }
         return true;
     }
 
-    private boolean columnCheck(int[][] board, int column) {
+    private boolean columnCheck(int[][] myInt, int column) {
         boolean[] constraint = new boolean[9];
         return IntStream.range(0, 9)
-          .allMatch(row -> boxCheck(board, row, constraint, column));
+          .allMatch(row -> boxCheck(myInt, row, constraint, column));
     }
 
-    private boolean rowCheck(int[][] board, int row) {
+    private boolean rowCheck(int[][] myInt, int row) {
         boolean[] constraint = new boolean[9];
         return IntStream.range(0, 9)
-          .allMatch(column -> boxCheck(board, row, constraint, column));
+          .allMatch(column -> boxCheck(myInt, row, constraint, column));
     }
 
-    private boolean boxCheck(int[][] board, int row, boolean[] constraint, int column) {
-        if (board[row][column] != 0) {
-            if (!constraint[board[row][column] - 1]) {
-                constraint[board[row][column] - 1] = true;
+    private boolean boxCheck(int[][] myInt, int row, boolean[] constraint, int column) {
+        if (myInt[row][column] != 0) {
+            if (!constraint[myInt[row][column] - 1]) {
+                constraint[myInt[row][column] - 1] = true;
             } else {
                 return false;
             }
