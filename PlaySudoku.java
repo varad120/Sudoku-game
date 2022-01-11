@@ -40,7 +40,7 @@ public class PlaySudoku {
             
             while (!scanner.hasNextInt())
     		{
-    			System.out.println("Please enter the correct row number");
+    			System.out.println("Please enter the correct option in number");
     			scanner.next();
     		}
     		menuvalue=scanner.nextInt();
