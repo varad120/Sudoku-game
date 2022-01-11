@@ -39,10 +39,40 @@ public class PlaySudoku {
             System.out.println("\n1. enter location for row and column...\n2. I give up solve for me\n3. Exit game...");
             menuvalue = scanner.nextInt();
             if(menuvalue == 1) {
+            	int usrrowValue;
             	System.out.println("\nNow type in the row value...");
-                int usrrowValue = scanner.nextInt();
-                System.out.println("\nNow type in the col value...");
-                int usrcolValue = scanner.nextInt();
+            	int c=0;
+            	do {
+            		if (c!=0)
+            		{
+            			System.out.println("Please enter row value between 1-9");
+            		}
+            		c++;
+            		while (!scanner.hasNextInt())
+            		{
+            			System.out.println("Please enter the correct row number");
+            			scanner.next();
+            		}
+            		usrrowValue=scanner.nextInt();
+            	}while(usrrowValue<0 || usrrowValue>10);
+                
+            	int usrcolValue;
+            	System.out.println("\nNow type in the col value...");
+            	int d=0;
+            	do 
+            	{
+            		if (d!=0)
+            		{
+            			System.out.println("Please enter Coloumn value between 1-9");
+            		}
+            		d++;
+            		while (!scanner.hasNextInt())
+        		{
+        			System.out.println("Please enter the correct Coloumn number");
+        			scanner.next();
+        		}
+        		usrcolValue=scanner.nextInt();
+        	}while(usrcolValue<0 || usrcolValue>10);
                 if (board[(usrrowValue-1)][(usrcolValue-1)] == NO_VALUE) {
                 	
                 	System.out.println("\nNow type in the value...");
