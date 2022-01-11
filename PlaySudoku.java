@@ -37,7 +37,13 @@ public class PlaySudoku {
     	Scanner scanner = new Scanner(System.in);
         do{
             System.out.println("\n1. enter location for row and column...\n2. I give up solve for me\n3. Exit game...");
-            menuvalue = scanner.nextInt();
+            
+            while (!scanner.hasNextInt())
+    		{
+    			System.out.println("Please enter the correct row number");
+    			scanner.next();
+    		}
+    		menuvalue=scanner.nextInt();
             if(menuvalue == 1) {
             	int usrrowValue;
             	System.out.println("\nNow type in the row value...");
@@ -73,17 +79,31 @@ public class PlaySudoku {
         		}
         		usrcolValue=scanner.nextInt();
         	}while(usrcolValue<0 || usrcolValue>10);
-                if (board[(usrrowValue-1)][(usrcolValue-1)] == NO_VALUE) {
+                if (board[(usrrowValue-1)][(usrcolValue-1)] == NO_VALUE)
+                {
                 	
                 	System.out.println("\nNow type in the value...");
                 	int mainvalue = scanner.nextInt();
-                	if (mainvalue <= 9 && mainvalue >= 1) {
+                
+                	int e=0;
+                	do 
+                	{
+                		if (e!=0)
+                		{
+                			System.out.println("Please enter value between 1-9");
+                		}
+                		d++;
+                		while (!scanner.hasNextInt())
+            		{
+            			System.out.println("Please enter the correct value");
+            			scanner.next();
+            		}
+            		usrcolValue=scanner.nextInt();
+            	}while(usrcolValue<0 || usrcolValue>10);
+                	
                 		board[(usrrowValue-1)][(usrcolValue-1)] = mainvalue;
                 		printBoard(board);
-                	}
-                	else {
-                		System.out.println("enter value between 1 to 9");
-                	}
+                	
                 }
                 else {
                 	System.out.println("enter the correct location of row and column");
