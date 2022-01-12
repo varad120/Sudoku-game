@@ -79,11 +79,12 @@ public class PlaySudoku {
         		}
         		usrcolValue=scanner.nextInt();
         	}while(usrcolValue<0 || usrcolValue>10);
+            	
                 if (board[(usrrowValue-1)][(usrcolValue-1)] == NO_VALUE)
                 {
                 	
                 	System.out.println("\nNow type in the value...");
-                	int mainvalue = scanner.nextInt();
+                	int mainvalue;
                 
                 	int e=0;
                 	do 
@@ -98,11 +99,10 @@ public class PlaySudoku {
             			System.out.println("Please enter the correct value");
             			scanner.next();
             		}
-            		usrcolValue=scanner.nextInt();
-            	}while(usrcolValue<0 || usrcolValue>10);
-                	
-                		board[(usrrowValue-1)][(usrcolValue-1)] = mainvalue;
-                		printBoard(board);
+            		mainvalue=scanner.nextInt();
+            	   }while(usrcolValue<0 || usrcolValue>10);
+                	board[(usrrowValue-1)][(usrcolValue-1)] = mainvalue;
+                	printBoard(board);
                 	
                 }
                 else {
